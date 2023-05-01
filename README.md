@@ -49,7 +49,7 @@ Projeto criado no curso JS na web: CRUD com JavaScript assíncrono, idealizada n
 
 - Clone o repositório em um diretório de sua preferência
          
-      git clone https://github.com/gleisonfernandes/validacaoDoguito.git
+      git clone https://github.com/gleisonfernandes/DoguitoPetshop.git
 
 - Abra o diretório do projeto no Visual Studio Code.
 - Abra o terminal do Visual Studio Code e execute os comandos nessa mesma sequência
