@@ -1,6 +1,10 @@
 const listaClientes = async () =>{
     let resposta = await fetch('http://localhost:3000/profile')
-    return resposta.json();
+    if(resposta.ok){
+        return resposta.json();
+    }
+    throw new Error('Não foi possível lista os clientes.');
+    
 }
 
 const criaCliente = async (nome, email) => {
@@ -14,18 +18,29 @@ const criaCliente = async (nome, email) => {
             email: email
         })
     });
-    return resposta.body;
+    if(resposta.ok){
+        return resposta.body;
+    }
+    throw new Error('Não foi possível criar um cliente.');
 }
 
 const removeCliente = async (id) =>{
-    return await fetch(`http://localhost:3000/profile/${id}`, {
+    let resposta = await fetch(`http://localhost:3000/profile/${id}`, {
         method: 'DELETE'
     })
+    if(resposta.ok){
+        return resposta;
+    }
+    throw new Error('Não foi possível remover o cliente.');
 }
 
 const detalhaCliente = async (id) => {
     let resposta = await fetch(`http://localhost:3000/profile/${id}`)
-    return resposta.json();
+    if(resposta.ok){
+        return resposta.json();
+    }
+    throw new Error('Não foi possível detalhar o cliente.');
+    
 
 }
 
@@ -40,7 +55,10 @@ const atualizaCliente = async (id, nome, email) => {
             email: email
         })
     });
-    return resposta.json()
+    if(resposta.ok){
+        return resposta.json();
+    }
+    throw new Error('Não foi possível atualizar o cliente.');
 }
 
 export const clienteService = {
