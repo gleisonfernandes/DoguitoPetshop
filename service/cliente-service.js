@@ -1,12 +1,10 @@
-const listaClientes = () =>{
-    return fetch('http://localhost:3000/profile')
-    .then(resposta => {
-            return resposta.json();
-    })
+const listaClientes = async () =>{
+    let resposta = await fetch('http://localhost:3000/profile')
+    return resposta.json();
 }
 
-const criaCliente = (nome, email) => {
-    return fetch('http://localhost:3000/profile', {
+const criaCliente = async (nome, email) => {
+    let resposta = await fetch('http://localhost:3000/profile', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -15,27 +13,24 @@ const criaCliente = (nome, email) => {
             nome: nome,
             email: email
         })
-    })
-    .then(resposta => {
-        return resposta.body;
-    })
+    });
+    return resposta.body;
 }
 
-const removeCliente = (id) =>{
-    return fetch(`http://localhost:3000/profile/${id}`, {
+const removeCliente = async (id) =>{
+    return await fetch(`http://localhost:3000/profile/${id}`, {
         method: 'DELETE'
     })
 }
 
-const detalhaCliente = (id) => {
-    return fetch(`http://localhost:3000/profile/${id}`)
-    .then(resposta =>{
-        return resposta.json()
-    })
+const detalhaCliente = async (id) => {
+    let resposta = await fetch(`http://localhost:3000/profile/${id}`)
+    return resposta.json();
+
 }
 
-const atualizaCliente = (id, nome, email) => {
-    return fetch(`http://localhost:3000/profile/${id}`, {
+const atualizaCliente = async (id, nome, email) => {
+    let resposta = await fetch(`http://localhost:3000/profile/${id}`, {
         method: 'PUT',
         headers: {
             'Content-type' : 'application/json'
@@ -44,10 +39,8 @@ const atualizaCliente = (id, nome, email) => {
             nome : nome,
             email: email
         })
-    })
-    .then(resposta => {
-        return resposta.json()
-    })
+    });
+    return resposta.json()
 }
 
 export const clienteService = {
